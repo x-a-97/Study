@@ -1,4 +1,8 @@
-book_name:ProGit, origin_URL: https://git-scm.com/book/zh/v2
+/*
+ * book_name:ProGit
+ * origin_URL: https://git-scm.com/book/zh/v2
+ * authoer: x_a_97@163.com
+ */
 
 # 工作目录中初始化新仓库 
 git init
@@ -200,6 +204,26 @@ git merge iss53
 
 # 删除不再需要的分支
 git branch -d iss53
+
+# 启动可视化合并工具
+git mergetool
+
+# 分支管理
+# 得到当前所有分支的一个列表
+git branch
+
+# 查看每个分支的最后一次提交
+git branch -v
+
+# 查看哪些分支已经合并到当前分支
+git branch --merged
+
+# 查看尚未合并到当前分支的分支
+git branch --no-merged
+
+# 分支开发工作流
+# master 分支上保留完全稳定的代码
+# 特性分支, 被用来实现单一特性或相关工作
 
 
 
