@@ -236,4 +236,70 @@ spark.sql("select count(1) from swimmers").show()
 spark.sql("select id, age from swimmers where age = 22").show()
 spark.sql("select name, eyeColor from swimmers where eyeColor like 'b%'").show()
 
+[20190505-17:12] Chapter 4: prepare data for modeling
+
+# All data is dirty, until you have tested and proven the your self that your data is in a clean state, you should neither turst nor use it
+# to prepare the data
+# - recognize and handle duplicates, missing observations and outliers
+# - Calculate descriptive statistics and correlations
+# - Visualize your data withe matplotlib and Bokeh
+
+# Duplicates
+
+# compare the counts of the full dataset with he one after running a .distinct() method
+print('Count of rows: {0}'.format(df.count()))
+print('Count of distinct rows: {0}'.format(df.distinct().count()))
+
+# if these two numbers differ, then 
+df = df.dropDuplicate()
+
+# check whether there are any duplicates in the data irrespective od ID
+print('Count of ids:  {0}'.format(df.count()))
+print('Count of distinct ids: {0}'.format(
+    df.select([ c for c in df.columns if c != 'id' 
+    ]).distic().count())
+)
+
+df = df.dropDuplicates(subset=[
+	c for c in df.columns if c != 'id'
+	])
+
+# to calculate the total and distinct number of IDs in on step
+import pyspark.sql.function as fn
+df.agg(
+fn.count('di').alias('count'),
+fn.countDistinct('id).alias('distinct')).show()
+
+# impute a mean, median  or other calculated value
+mean = df_miss_no_income.agg(*[fn.mean(c).alias(c) for c in df_missing_no_income.columns if c != 'gender']).toPandas().to_dict('records')[0]
+means['gender'] = 'missing'
+df_miss_no_income.fillna(means).show()
+
+# outliers: observations that deviate significantly from the distrubution of the rest of the sample
+df_outliers = spark.createDataFrame([
+	(1, 143.5, 5.3, 28),
+	(2, 154.2, 5.5, 45),
+	(3, 342.3, 5.1, 99),
+	(4, 144.5, 5.5, 33),
+	(5, 133.2, 5.4, 54),
+	(6, 124.1, 5.1, 21),
+	(7, 129.2, 5.3, 42),
+	], ['id', 'weight', 'height', 'age'])
+
+# calculate the lower and upper cut off points for each feature
+cols = ['weight', 'height', 'age']
+bounds = {}
+
+for col in cols:
+	quantiles = df_outliers.approxQuantile(
+		col, [0.25, 0.75], 0.05
+	)
+	IQR = quantiles[1] - quantiles[0]
+
+	bounds[col] = [
+		quantiles[0] - 1.5 * IQR,
+		quantiles[1] + 1.5 * IQR
+		]
+
+
 
