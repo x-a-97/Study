@@ -1,0 +1,99 @@
+Basic Steps in a Data Science Project
+	Acquire
+		import raw dataset into your analytics platform
+			Identify data sets
+			Retrieve data
+			Query data
+
+	Prepare
+		explore & visulize
+			Understand nature of data
+			preliminary analysis
+
+		pre-process data
+			Clean
+				inconsistent values
+				duplicate records
+				missing values
+				invalid data
+				outliers
+
+				remove data with missing values
+				merge duplicate records
+				generate best estimate for invalid values
+					
+			transform
+				integrate
+				package
+
+	Analyze
+		feature selection
+		model selection
+			- category
+			- regression
+			- clustering
+			- association analysis
+			- graph analytics: use graph structures to find connections between entities
+			- modeling: build model -> validate model
+
+		analyze the results
+
+	report
+		present your findings
+
+	act
+
+Data Collection from Diverse Sources
+	Databases
+		relational
+		non-relational(NoSQL)
+	Text files
+		CSV files
+		Text files
+	Live feeds
+		Sensors
+		Online Platforms
+			twitter
+			Live feeds of weather observations
+Data Cleaning
+
+Analyze and Modeling
+	supervised learning
+	unsupervised learning
+	semi supervised learning
+
+scikit-learn for machine learning in python
+K-Mean clustering in Python
+
+
+20190523 Introduction to Machine Learning
+modles/system can learn to perform a specific task on its own
+
+application:
+	creadit card fraud detection
+	handwritten digit recognition
+	recommendations on websites
+
+categories of machine learning
+	classfication
+	cluster analysis
+	regression
+	association analysis
+
+supervised approaches
+	target is provided
+	labled data
+	classfication & regression are supervised
+
+unsupervised approaches
+	target is unknown or unavailable
+	unlabled data
+	cluster analysis & association analysis are unsupervised
+	
+
+
+
+
+
+
+

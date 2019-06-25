@@ -1,0 +1,20 @@
+
+
+
+
+{"productID":"973462114872074243","strategyCollectName":"ax新增策略集0520","decisionType":"WORST","decisionReportType":"ASYNC"}
+
+
+{
+    "productID":"973462114872074243",
+    "strategyCollectName":"ax新增策略集0520",
+    "decisionType":"WORST",
+    "decisionReportType":"ASYNC",
+    "copyStrategyList": 
+        {
+        "ruleIDList": "1055702550818365444"],             
+        "strategyID": "1055702291887202307"
+        }
+
+    ]
+}
